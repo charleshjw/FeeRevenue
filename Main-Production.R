@@ -3,14 +3,14 @@
 # Author: XBBKKL3
 ###############################################################################
 #rm(list=ls())
-setwd("C:/workspace2016/Revenue");
-source("../Library/Functions.R");
-source("../Library/Functions-Revenue.R");
-source("../Library/Functions-MovingAverage.R");
-source("../Library/Functions-SeasonalDecomposition.R");
-source("../Library/Functions-RegressionModel.R");
-source("../Library/Functions-Production.R");
-source("../Library/Functions-TimeSeriesModel.R");
+setwd("/Users/charleshjw/Workspace/FeeRevenue");
+source("./Library/Functions.R");
+source("./Library/Functions-Revenue.R");
+source("./Library/Functions-MovingAverage.R");
+source("./Library/Functions-SeasonalDecomposition.R");
+source("./Library/Functions-RegressionModel.R");
+source("./Library/Functions-Production.R");
+source("./Library/Functions-TimeSeriesModel.R");
 
 ####Config and Parameter Setting
 EXECUTE_PRODUCTION <- TRUE;
@@ -43,10 +43,10 @@ max_segments <- 3;
 
 
 #Remote data file
-revenue_file_version <- "H:/workspace2016/Revenue/Data/RevenuebyLOBv0.3.xlsx";
+revenue_file_version <- "./Data/RevenuebyLOBv0.3.xlsx";
 #revenue_file_version <- "./Data/RevenuebyLOBv0.3.xlsx";
 
-Macro_file <- "../Library/Data/Masterfile-Data Process-11-17-16.xlsx";#Newest Version
+Macro_file <- "./Library/Data/Masterfile-Data Process-11-17-16.xlsx";#Newest Version
 
 ###Local Files
 variable_file_version <- "./Data/VariableSelection-Revenue-CCAR.xlsx";
@@ -88,9 +88,9 @@ Time_periods_Q <- 1:38;
 #	BUS <- c("FX");
 #	BUS <- c("SL");
 #	BUS <- c("DR");
-#	BUS <- c("AS","Clearing","CT","CashMgmt", "IM", "BDS", "FX", "DR", "WM");
+	BUS <- c("AS","Clearing","CT","CashMgmt", "IM", "BDS", "FX", "DR", "WM");
 #	BUS <- c("CashMgmt", "IM", "BDS", "FX", "DR", "WM");
-#	BUS <- c("CT","CashMgmt", "BDS", "FX", "SL", "DR");
+#BUS <- c("BDS", "FX", "DR", "WM");
 
 #BUS <- c("DR", "CashMgmt");
 ###Model Production Version
