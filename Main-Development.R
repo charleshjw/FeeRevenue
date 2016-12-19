@@ -3,28 +3,28 @@
 # Author: XBBKKL3
 ###############################################################################
 #rm(list=ls())
-setwd("C:/workspace2016/Revenue");
-source("../Library/Functions.R");
-source("../Library/Functions-Revenue.R");
-source("../Library/Functions-MovingAverage.R");
-source("../Library/Functions-SeasonalDecomposition.R");
-source("../Library/Functions-TimeSeriesModel.R");
-source("../Library/Functions-RegressionModel.R");
-source("../Library/Functions-Production.R")
+setwd("/Users/charleshjw/Workspace/FeeRevenue");
+source("./Library/Functions.R");
+source("./Library/Functions-Revenue.R");
+source("./Library/Functions-MovingAverage.R");
+source("./Library/Functions-SeasonalDecomposition.R");
+source("./Library/Functions-TimeSeriesModel.R");
+source("./Library/Functions-RegressionModel.R");
+source("./Library/Functions-Production.R")
 
-TEST_ENVIRONMENT <- FALSE;
-EXECUTE_DATA_EXAM <- FALSE;
-EXECUTE_COMPONENT_ANALYSIS_LOB <- FALSE;
-EXECUTE_SEGMENTATION_MATERIALITY_ANALYSIS <- FALSE;
-EXECUTE_TimeSeries_ANALYSIS <- FALSE;
-EXECUTE_CORR_ANALYSIS <- FALSE;
-EXECUTE_REG_ANALYSIS <- TRUE;
+TEST_ENVIRONMENT <- TRUE;
+EXECUTE_DATA_EXAM <- TRUE;
+EXECUTE_COMPONENT_ANALYSIS_LOB <- TRUE;
+EXECUTE_SEGMENTATION_MATERIALITY_ANALYSIS <- TRUE;
+EXECUTE_TimeSeries_ANALYSIS <- TRUE;
+EXECUTE_CORR_ANALYSIS <- TRUE;
+EXECUTE_REG_ANALYSIS <- FALSE;
 EXECUTE_DIFF_REG_ANALYSIS <- FALSE;
 EXECUTE_DIFF_REG_ANALYSIS_3V <- FALSE;
-EXECUTE_MOVINGAVERAGE <- FALSE;
-EXECUTE_SEASONALMODEL <- FALSE;
+EXECUTE_MOVINGAVERAGE <- TRUE;
+EXECUTE_SEASONALMODEL <- TRUE;
 EXECUTE_REG_SUMMARY <- FALSE;
-EXECUTE_ARIMAXMODEL <- FALSE;
+EXECUTE_ARIMAXMODEL <- TRUE;
 ####Config and Parameter Setting
 num_models_to_examine <- 20; #regression models to plot and exam
 revenue_threshold <- 1000000 #if the sum last 12 month revenue < threshold, it will not be analyzed.
@@ -50,27 +50,14 @@ Color_adverse <- Color_severe;
 Color_bhc <- Color_severe;
 #Color_bhc <- "#661DE8";
 Color_history <- "#0094FF";
-
 Color_backtest <- Color_black;
 
-
 #Remote data file
-revenue_file_version <- "H:/workspace2016/Revenue/Data/RevenuebyLOBv0.3.xlsx";
-#revenue_file_version <- "H:/workspace2016/Revenue/Data/CashMgmtRevenueTest.xlsx";
+revenue_file_version <- "./Data/RevenuebyLOBv0.3.xlsx";
 
-#Macro_file <- "../Library/Data/Masterfile-Data Process-6-30-16.xlsx";##DFAST Version
-#Macro_file <- "../Library/Data/Masterfile-Data Process-6-30-16vCCAR2.xlsx";##Parallel Shift Version
-#Macro_file <- "../Library/Data/Masterfile-Data Process-9-30-16.xlsx";#Newest Version
-#Macro_file <- "../Library/Data/Masterfile-Data Process-11-02-16.xlsx";#Newest Version
-Macro_file <- "../Library/Data/Masterfile-Data Process-11-17-16.xlsx";#Newest Version
+Macro_file <- "./Library/Data/Masterfile-Data Process-11-17-16.xlsx";#Newest Version
 
 ###Local Files
-#variable_file_version <- "./Data/VariableSelection-Revenue.xlsx";
-
-#Output_root <- "./Output-Q22016-CashMgmtTest/";
-#Output_root <- "./Output-Q22016-DFAST/";
-#Output_root <- "./Output-Q22016-CCAR11022016/";
-#Output_root <- "./Output-Q22016-CCAR/";
 Output_root <- "../Revenue-Results/Output-Q22016-CCAR11172016/";
 if (!dir.exists(Output_root)) {
 	dir.create(Output_root);
@@ -79,16 +66,10 @@ if (!dir.exists(Output_root)) {
 Time_periods <- 1:114;
 Time_periods_Q <- 1:38;
 
-#Output_root <- "./Output-Q22016-ClearingShort/";
-##2012 Jan
-#Time_periods <- 61:114;
-#Time_periods_Q <- 21:38;
-
-#max_segments <- 1;
 max_segments <- 3;
 
 if (TEST_ENVIRONMENT) {
-#	BUS <- c("AS");
+	BUS <- c("AS");
 #	BUS <- c("BDS");
 #	BUS <- c("DR");
 #	BUS <- c("Clearing");
@@ -102,7 +83,7 @@ if (TEST_ENVIRONMENT) {
 #	BUS <- c("DR");
 #	BUS <- c("BDS","CashMgmt","WM","Clearing","DR");
 #	BUS <- c("Clearing","IM","FX");
-	Enable_Narrowed_List <- FALSE;
+	Enable_Narrowed_List <- TRUE;
 }  else {
 	#	BUS <- c("AS");
 	#	BUS <- c("Clearing");
@@ -117,7 +98,7 @@ if (TEST_ENVIRONMENT) {
 	
 	# sec lending, global markets, dr
 #	BUS <- c("BK","IM","AM","WM","IS","AS","CashMgmt","BDS","Clearing","CSD","CT","DR","GCS","OtherSec","FX","TOTECH","TRESRY","TSHSER");
-	Enable_Narrowed_List <- FALSE;
+	Enable_Narrowed_List <- TRUE;
 #	Expense_Items_Report_Items <- Expense_Items;
 }
 
@@ -145,7 +126,7 @@ if (EXECUTE_COMPONENT_ANALYSIS_LOB) {
 	segment_peroid_end <- c(2015,12);
 
 	segment_peroid_start_q <- c(2015,1);
-	segment_peroid_end_q <- c(2016,4);
+	segment_peroid_end_q <- c(2015,4);
 	for (bu in 1:length(BUS)) {
 #		bu<-10
 		BU <- BUS[bu];

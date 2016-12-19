@@ -88,8 +88,8 @@ Time_periods_Q <- 1:38;
 #	BUS <- c("FX");
 #	BUS <- c("SL");
 #	BUS <- c("DR");
-	BUS <- c("AS","Clearing","CT","CashMgmt", "IM", "BDS", "FX", "DR", "WM");
-#	BUS <- c("CashMgmt", "IM", "BDS", "FX", "DR", "WM");
+	BUS <- c("AS","CT","CashMgmt", "IM", "BDS", "FX", "DR", "WM");
+#	BUS <- c("BDS", "FX", "DR", "WM");
 #BUS <- c("BDS", "FX", "DR", "WM");
 
 #BUS <- c("DR", "CashMgmt");
@@ -128,19 +128,19 @@ if (EXECUTE_PRODUCTION) {
 #	source("./Production-Regression-Summary.R");
 #}
 #
-BUS <- c("Clearing");
-
-Output_root <- "../Revenue-Results/Output-Q22016-Short2009/";
-if (!dir.exists(Output_root)) {
-	dir.create(Output_root);
-}
-
-Time_periods <- 25:114;
-
-if (EXECUTE_PRODUCTION) {
-	print("--Production\n");
-	source("./Production-Regression-Summary.R");
-}
+# BUS <- c("Clearing");
+# 
+# Output_root <- "../Revenue-Results/Output-Q22016-Short2009/";
+# if (!dir.exists(Output_root)) {
+# 	dir.create(Output_root);
+# }
+# 
+# Time_periods <- 25:114;
+# 
+# if (EXECUTE_PRODUCTION) {
+# 	print("--Production\n");
+# 	source("./Production-Regression-Summary.R");
+# }
 
 
 #Output_root <- "./Output-Q22016-Short2010/";

@@ -70,8 +70,8 @@ for (bu in 1:length(BUS)) {
 						source("./Production-AddDummyVariables.R");
 					}
 					#run regression and get forecasts
-#					forecasts_raw <- Get_Forecast(revenue_lob, modelset, Output_file, ConvertRevenue=TRUE);##########
-					forecasts_raw <- Get_Forecast(revenue_lob, modelset, Output_file, ConvertRevenue=FALSE);##########
+					forecasts_raw <- Get_Forecast(revenue_lob, modelset, Output_file, ConvertRevenue=TRUE);##########
+					#forecasts_raw <- Get_Forecast(revenue_lob, modelset, Output_file, ConvertRevenue=FALSE);##########
 					forecasts <- Aggregate_Forecasts(forecasts_raw,covert_to_quarter=FALSE);
 					
 					#write original data to output
